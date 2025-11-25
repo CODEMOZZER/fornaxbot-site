@@ -9,38 +9,38 @@
     body {
       margin: 0;
       font-family: 'Roboto', Arial, sans-serif;
-      background: radial-gradient(ellipse at top left, #23272a 60%, #0a0a13 100%), url('assets/stars-bg.png');
-      color: #fff;
+      background: radial-gradient(ellipse at center, #10131a 60%, #05060a 100%);
+      color: #eaf6ff;
       min-height: 100vh;
       position: relative;
       overflow-x: hidden;
     }
     .navbar {
-      background: rgba(44,47,51,0.95);
+      background: rgba(10,16,32,0.98);
       padding: 0 40px;
       display: flex;
       align-items: center;
       height: 70px;
       justify-content: space-between;
-      box-shadow: 0 2px 12px 0 rgba(114,137,218,0.15);
-      border-bottom: 1px solid #23272a;
+      box-shadow: 0 2px 12px 0 rgba(0, 170, 255, 0.15);
+      border-bottom: 1px solid #0a1a2f;
     }
     .navbar-brand {
       font-size: 1.7em;
-      color: #7289da;
+      color: #00cfff;
       font-weight: bold;
       display: flex;
       align-items: center;
       gap: 12px;
-      text-shadow: 0 0 8px #7289da, 0 0 16px #23272a;
+      text-shadow: 0 0 12px #00cfff, 0 0 24px #10131a;
     }
     .logo-img {
       height: 40px;
       width: 40px;
       object-fit: contain;
       border-radius: 50%;
-      background: #23272a;
-      box-shadow: 0 2px 8px rgba(255, 80, 0, 0.3), 0 0 12px #7289da;
+      background: transparent;
+      box-shadow: 0 0 16px #00cfff, 0 0 32px #10131a;
     }
     .navbar-links {
       list-style: none;
@@ -50,15 +50,15 @@
       padding: 0;
     }
     .navbar-links li a {
-      color: #fff;
+      color: #eaf6ff;
       text-decoration: none;
       font-size: 1.1em;
       transition: color 0.2s, text-shadow 0.2s;
-      text-shadow: 0 0 6px #23272a;
+      text-shadow: 0 0 6px #10131a;
     }
     .navbar-links li a:hover {
-      color: #ff4e00;
-      text-shadow: 0 0 12px #ff4e00, 0 0 24px #7289da;
+      color: #00cfff;
+      text-shadow: 0 0 12px #00cfff, 0 0 24px #10131a;
     }
     .content {
       padding: 40px;
@@ -75,23 +75,23 @@
       object-fit: contain;
       margin-bottom: 24px;
       border-radius: 50%;
-      box-shadow: 0 0 48px 8px #ff4e00, 0 0 32px 4px #7289da;
-      background: #23272a;
-      border: 2px solid #7289da;
+      box-shadow: 0 0 48px 8px #00cfff, 0 0 32px 4px #10131a;
+      background: transparent;
+      border: 2px solid #00cfff;
     }
     .hero h1 {
       font-size: 2.7em;
       color: #00cfff;
-      text-shadow: 0 0 24px #ff4e00, 0 0 32px #00cfff;
+      text-shadow: 0 0 24px #00cfff, 0 0 32px #10131a;
       letter-spacing: 2px;
     }
     .hero p {
       font-size: 1.2em;
-      color: #99aab5;
-      text-shadow: 0 0 8px #23272a;
+      color: #b3cfff;
+      text-shadow: 0 0 8px #10131a;
     }
     .btn {
-      background: linear-gradient(90deg, #ff4e00 0%, #7289da 100%);
+      background: linear-gradient(90deg, #00cfff 0%, #10131a 100%);
       color: #fff;
       border: none;
       padding: 12px 28px;
@@ -102,13 +102,13 @@
       transition: background 0.2s, box-shadow 0.2s;
       text-decoration: none;
       display: inline-block;
-      box-shadow: 0 0 16px #ff4e00, 0 0 8px #7289da;
+      box-shadow: 0 0 16px #00cfff, 0 0 8px #10131a;
       font-weight: bold;
       letter-spacing: 1px;
     }
     .btn:hover {
-      background: linear-gradient(90deg, #7289da 0%, #ff4e00 100%);
-      box-shadow: 0 0 32px #ff4e00, 0 0 16px #7289da;
+      background: linear-gradient(90deg, #10131a 0%, #00cfff 100%);
+      box-shadow: 0 0 32px #00cfff, 0 0 16px #10131a;
     }
     .features {
       margin-bottom: 60px;
@@ -119,30 +119,30 @@
       flex-wrap: wrap;
     }
     .feature-item {
-      background: rgba(35,39,42,0.95);
+      background: rgba(10,16,32,0.95);
       padding: 24px;
       border-radius: 10px;
       flex: 1;
       min-width: 220px;
-      box-shadow: 0 2px 16px rgba(255,80,0,0.15), 0 0 8px #7289da;
-      border: 1px solid #7289da;
+      box-shadow: 0 2px 16px rgba(0,207,255,0.15), 0 0 8px #10131a;
+      border: 1px solid #00cfff;
     }
     .feature-item h3 {
-      color: #ff4e00;
-      text-shadow: 0 0 8px #7289da;
+      color: #00cfff;
+      text-shadow: 0 0 8px #10131a;
     }
     .docs, .community {
       margin-bottom: 60px;
     }
     .footer {
-      background: rgba(44,47,51,0.95);
+      background: rgba(10,16,32,0.98);
       text-align: center;
       padding: 20px 0;
-      color: #99aab5;
+      color: #b3cfff;
       position: relative;
       bottom: 0;
       width: 100%;
-      box-shadow: 0 -2px 12px #7289da;
+      box-shadow: 0 -2px 12px #00cfff;
     }
   </style>
 </head>
