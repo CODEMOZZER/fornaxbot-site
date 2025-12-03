@@ -166,7 +166,7 @@
 
     async function fetchMessages() {
       try {
-        const res = await fetch('/api/chat');
+        const res = await fetch('https://zophos-site-1.onrender.com/api/chat');
         const messages = await res.json();
         renderMessages(messages);
       } catch (e) {
@@ -179,7 +179,7 @@
       const username = chatUsername.value.trim() || 'Anonymous';
       const message = chatMessage.value.trim();
       if (!message) return;
-      await fetch('/api/chat', {
+      await fetch('https://zophos-site-1.onrender.com/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, message })
