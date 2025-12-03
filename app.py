@@ -52,30 +52,31 @@ def delete_message(msg_id):
         conn.commit()
     return jsonify({'success': True})
 
-    @app.route('/api/chat', methods=['GET'])
-    def get_chat_messages():
-        with conn.cursor() as cur:
-            # Delete messages older than 30 days
-            cur.execute("DELETE FROM chat_messages WHERE timestamp < now() - INTERVAL '30 days';")
-            conn.commit()
-            # Fetch recent messages
-            cur.execute('SELECT * FROM chat_messages ORDER BY timestamp DESC LIMIT 50;')
-            messages = cur.fetchall()
-        return jsonify(messages)
+# Chat endpoints must be at top level
+@app.route('/api/chat', methods=['GET'])
+def get_chat_messages():
+    with conn.cursor() as cur:
+        # Delete messages older than 30 days
+        cur.execute("DELETE FROM chat_messages WHERE timestamp < now() - INTERVAL '30 days';")
+        conn.commit()
+        # Fetch recent messages
+        cur.execute('SELECT * FROM chat_messages ORDER BY timestamp DESC LIMIT 50;')
+        messages = cur.fetchall()
+    return jsonify(messages)
 
-    @app.route('/api/chat', methods=['POST'])
-    def post_chat_message():
-        data = request.json
-        username = data.get('username', 'Anonymous')
-        message = data.get('message', '')
-        if not message:
-            return jsonify({'error': 'Message required'}), 400
-        with conn.cursor() as cur:
-            cur.execute('INSERT INTO chat_messages (username, message) VALUES (%s, %s) RETURNING id;',
-                        (username, message))
-            conn.commit()
-            msg_id = cur.fetchone()['id']
-        return jsonify({'id': msg_id, 'username': username, 'message': message})
+@app.route('/api/chat', methods=['POST'])
+def post_chat_message():
+    data = request.json
+    username = data.get('username', 'Anonymous')
+    message = data.get('message', '')
+    if not message:
+        return jsonify({'error': 'Message required'}), 400
+    with conn.cursor() as cur:
+        cur.execute('INSERT INTO chat_messages (username, message) VALUES (%s, %s) RETURNING id;',
+                    (username, message))
+        conn.commit()
+        msg_id = cur.fetchone()['id']
+    return jsonify({'id': msg_id, 'username': username, 'message': message})
 
 # Homepage route with site colors and centered text
 @app.route('/')
