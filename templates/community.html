@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+  <main class="content">
+    <div id="terms-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(10,16,32,0.97);z-index:9999;align-items:center;justify-content:center;">
+      <div style="background:#23272a;padding:32px 28px;border-radius:16px;max-width:480px;margin:auto;box-shadow:0 2px 16px #7a2cff;display:flex;flex-direction:column;align-items:center;">
+        <img src="/assets/ZOPHOSLOGO4.png" alt="ZOPHOS Logo" style="height:70px;width:70px;object-fit:contain;border-radius:50%;background:#23272a;box-shadow:0 2px 12px #7a2cff;margin-bottom:12px;" />
+        <h2 style="color:#7a2cff;margin-top:0;text-align:center;">Community Terms & Rules</h2>
+        <ul style="color:#eaf6ff;font-size:1.08em;line-height:1.7;margin-bottom:18px;text-align:left;">
+          <li>No hate speech, harassment, or spam.</li>
+          <li>No sharing personal info or links to unsafe sites.</li>
+          <li>No inappropriate language (messages are filtered).</li>
+          <li>Respect all members and moderators.</li>
+          <li>Max message length: 256 characters.</li>
+          <li>Violations may result in warnings or blocking.</li>
+        </ul>
+        <div style="margin-top:18px;text-align:center;">
+          <button id="agree-terms" class="btn" style="margin-right:10px;">I Agree</button>
+          <button id="disagree-terms" class="btn" style="background:#e74c3c;">I Disagree</button>
+        </div>
+        <div id="block-msg" style="color:#e74c3c;margin-top:18px;display:none;font-weight:bold;">You must agree to the terms to participate in the community chat.</div>
+      </div>
+    </div>
+    <div class="forum-board" style="background:rgba(10,16,32,0.95);border-radius:10px;box-shadow:0 2px 16px #00cfff,0 0 8px #10131a;border:1px solid #00cfff;padding:24px;margin:32px auto;max-width:900px;">
+      <div id="chat-board"></div>
+    </div>
+    <form class="forum-form" style="display:flex;gap:10px;margin-top:18px;max-width:900px;margin-left:auto;margin-right:auto;">
+      <input type="text" id="chat-username" placeholder="Your name (optional)" class="forum-input" style="max-width:180px;background:#23272a;color:#eaf6ff;border-radius:6px;border:1px solid #39406a;" />
+      <input type="text" id="chat-message" placeholder="Type your message..." class="forum-input" style="background:#23272a;color:#eaf6ff;border-radius:6px;border:1px solid #39406a;" />
+      <button type="submit" class="btn" style="background:linear-gradient(90deg,#00cfff 0%,#10131a 100%);color:#fff;padding:10px 18px;border-radius:8px;font-size:1em;box-shadow:0 0 16px #00cfff;font-weight:bold;">Post</button>
+    </form>
+  </main>
+{% endblock %}

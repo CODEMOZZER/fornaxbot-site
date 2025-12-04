@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+  <main class="content">
+    <div class="settings-banner">
+      <div class="settings-banner-left">
+        <img class="settings-banner-avatar" src="/assets/default_profile.png" alt="Profile" />
+        <span class="settings-banner-name">Legion</span>
+      </div>
+      <div class="settings-banner-right">
+        <button class="settings-edit-btn">Edit Profile</button>
+      </div>
+    </div>
+    <div class="settings-card">
+      <div class="settings-row"><span>Email</span><span>johndoe@gmail.com</span></div>
+      <div class="settings-row"><span>Role</span><span>Admin</span></div>
+      <div class="settings-row"><span>Account Tier</span><span>Gold</span></div>
+      <div class="settings-row"><span>Password</span><span>******** <a href="#" style="color:#7a2cff;">Change</a></span></div>
+      <div class="settings-row"><span>Notifications</span><span>Enabled</span></div>
+      <div class="settings-row"><span>2FA</span><span>Disabled <a href="#" style="color:#7a2cff;">Enable</a></span></div>
+    </div>
+  </main>
+{% endblock %}

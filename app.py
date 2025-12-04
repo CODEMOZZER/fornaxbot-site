@@ -1,6 +1,6 @@
 
 import os
-from flask import Flask, request, jsonify, abort
+from flask import Flask, request, jsonify, abort, render_template
 from collections import defaultdict
 import time
 # Basic in-memory rate limiting (per IP, per endpoint)
@@ -176,50 +176,38 @@ def delete_chat_message(msg_id):
         conn.commit()
     return jsonify({'success': True})
 
-# Homepage route with site colors and centered text
+
+
+# Main index page route
 @app.route('/')
-def home():
-    return '''
-    <html>
-    <head>
-        <title>Zophos - Home</title>
-        <style>
-            body {
-                margin: 0;
-                font-family: 'Roboto', Arial, sans-serif;
-                background: radial-gradient(ellipse at center, #10131a 60%, #05060a 100%);
-                color: #eaf6ff;
-                min-height: 100vh;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .center-box {
-                background: #181a24;
-                border-radius: 12px;
-                padding: 48px 64px;
-                box-shadow: 0 2px 12px 0 rgba(0, 170, 255, 0.15);
-                text-align: center;
-            }
-            h1 {
-                color: #00cfff;
-                font-size: 2.5em;
-                margin-bottom: 18px;
-            }
-            p {
-                font-size: 1.2em;
-                color: #eaf6ff;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="center-box">
-            <h1>Welcome to Zophos!</h1>
-            <p>Your community site and chat API are running.<br>Visit <b>/community.html</b> to join the chat.</p>
-        </div>
-    </body>
-    </html>
-    '''
+def index():
+    return render_template('index.html', title='Welcome to ZOPHOS')
+
+
+# Docs page route using Jinja2 template
+@app.route('/docs')
+def docs():
+    return render_template('docs.html', title='Documentation')
+
+# Features page route
+@app.route('/features')
+def features():
+    return render_template('features.html', title='Features')
+
+# Community page route
+@app.route('/community')
+def community():
+    return render_template('community.html', title='Community')
+
+# Dashboard page route
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html', title='Bot Dashboard')
+
+# Home page route
+@app.route('/home')
+def home_page():
+    return render_template('home.html', title='Home')
 
 if __name__ == '__main__':
     app.run(debug=True)
