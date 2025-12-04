@@ -111,6 +111,24 @@
   </style>
 </head>
 <body>
+  <div id="terms-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(10,16,32,0.97);z-index:9999;align-items:center;justify-content:center;">
+    <div style="background:#23272a;padding:32px 28px;border-radius:16px;max-width:480px;margin:auto;box-shadow:0 2px 16px #7a2cff;">
+      <h2 style="color:#7a2cff;margin-top:0;">Community Terms & Rules</h2>
+      <ul style="color:#eaf6ff;font-size:1.08em;line-height:1.7;margin-bottom:18px;">
+        <li>No hate speech, harassment, or spam.</li>
+        <li>No sharing personal info or links to unsafe sites.</li>
+        <li>No inappropriate language (messages are filtered).</li>
+        <li>Respect all members and moderators.</li>
+        <li>Max message length: 256 characters.</li>
+        <li>Violations may result in warnings or blocking.</li>
+      </ul>
+      <div style="margin-top:18px;text-align:center;">
+        <button id="agree-terms" class="btn" style="margin-right:10px;">I Agree</button>
+        <button id="disagree-terms" class="btn" style="background:#e74c3c;">I Disagree</button>
+      </div>
+      <div id="block-msg" style="color:#e74c3c;margin-top:18px;display:none;font-weight:bold;">You must agree to the terms to participate in the community chat.</div>
+    </div>
+  </div>
   <nav class="navbar">
     <div class="navbar-brand">
       <img src="../assets/ZOPHOSLOGO4.png" alt="ZOPHOS Logo" class="logo-img" />
@@ -152,12 +170,17 @@
 
     function renderMessages(messages) {
       chatBoard.innerHTML = '';
+      function escapeHTML(str) {
+        return str.replace(/[&<>'"/]/g, function (c) {
+          return {'&':'&amp;','<':'&lt;','>':'&gt;','\'':'&#39;','"':'&quot;','/':'&#x2F;'}[c];
+        });
+      }
       messages.forEach(msg => {
         const div = document.createElement('div');
         div.className = 'forum-message';
         div.innerHTML = `
-          <span class="forum-user">${msg.username || 'Anonymous'}</span>
-          <span class="forum-text">${msg.message}</span>
+          <span class="forum-user">${escapeHTML(msg.username || 'Anonymous')}</span>
+          <span class="forum-text">${escapeHTML(msg.message)}</span>
           <span style="margin-left:10px;font-size:0.9em;color:#7a2cff;">${formatTimestamp(msg.timestamp)}</span>
         `;
         chatBoard.appendChild(div);
@@ -174,8 +197,59 @@
       }
     }
 
+
+    function showTermsModal() {
+      document.getElementById('terms-modal').style.display = 'flex';
+    }
+    function hideTermsModal() {
+      document.getElementById('terms-modal').style.display = 'none';
+    }
+    function blockTermsModal() {
+      document.getElementById('block-msg').style.display = 'block';
+      document.getElementById('agree-terms').style.display = 'none';
+      document.getElementById('disagree-terms').style.display = 'none';
+    }
+
+
+    // Check backend for terms agreement per IP
+    async function checkTermsAgreed() {
+      try {
+        const res = await fetch('https://zophos-site-production.up.railway.app/api/terms/agreed');
+        const data = await res.json();
+        if (!data.agreed) {
+          showTermsModal();
+        }
+      } catch (e) {
+        // fallback: show modal if backend unreachable
+        showTermsModal();
+      }
+    }
+    checkTermsAgreed();
+
+    document.getElementById('agree-terms').onclick = async function() {
+      try {
+        await fetch('https://zophos-site-production.up.railway.app/api/terms/agreed', { method: 'POST' });
+      } catch (e) {}
+      hideTermsModal();
+    };
+    document.getElementById('disagree-terms').onclick = async function() {
+      blockTermsModal();
+      // Optionally notify backend of disagreement (could POST with agreed: false)
+    };
+
     chatForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+      // Check backend again before posting
+      let agreed = true;
+      try {
+        const res = await fetch('https://zophos-site-production.up.railway.app/api/terms/agreed');
+        const data = await res.json();
+        agreed = !!data.agreed;
+      } catch (e) { agreed = false; }
+      if (!agreed) {
+        showTermsModal();
+        return;
+      }
       const username = chatUsername.value.trim() || 'Anonymous';
       const message = chatMessage.value.trim();
       if (!message) return;

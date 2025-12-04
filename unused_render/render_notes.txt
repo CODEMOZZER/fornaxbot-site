@@ -1,0 +1,1 @@
+This file contains old Render-related configuration, commands, and notes. Restore if you ever want to redeploy to Render.
