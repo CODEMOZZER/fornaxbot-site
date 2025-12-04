@@ -1,25 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--#include file="navbar.html" -->
-      display: flex;
-      gap: 30px;
-      margin: 0;
-      padding: 0;
-    }
-    .navbar-links li a {
-      color: #eaf6ff;
-      text-decoration: none;
-      font-size: 1.1em;
-      padding-bottom: 4px;
-      border-bottom: 2px solid transparent;
-      transition: color 0.2s, border-bottom 0.2s;
-    }
-    .navbar-links li.active a,
-    .navbar-links li a:hover {
-      color: #00cfff;
-      border-bottom: 2px solid #00cfff;
-    }
+    <!-- Navbar styles are now only in navbar.html for consistency -->
     .content {
       padding: 40px;
       margin-top: 30px;
@@ -98,10 +80,13 @@
       background: rgba(10,16,32,0.98);
       text-align: center;
       padding: 20px 0;
-      color: #b3cfff;
+      color: #00cfff;
       position: relative;
       bottom: 0;
       width: 100%;
+      font-size: 1.08em;
+      text-shadow: 0 0 8px #00cfff, 0 0 16px #10131a;
+      letter-spacing: 1px;
       box-shadow: 0 -2px 12px #00cfff;
     }
     .fornax-title {
@@ -211,9 +196,7 @@
     </main>
     <!-- Single copyright footer only -->
   </div>
-  <footer class="footer">
-    <p style="color:#00cfff;font-size:1.08em;text-shadow:0 0 8px #00cfff,0 0 16px #10131a;letter-spacing:1px;">&copy; 2025 ZOPHOS. ALL RIGHTS RESERVED.</p>
-  </footer>
+  <footer class="footer">&copy; 2025 ZOPHOS. ALL RIGHTS RESERVED.</footer>
 
   <!-- Cosmic Popup Modal -->
   <div id="zpBackdrop" class="zp-backdrop" role="dialog" aria-modal="true" aria-labelledby="zpTitle" style="position:fixed;inset:0;background:rgba(10,16,32,0.97);display:none;align-items:flex-end;justify-content:flex-start;z-index:9999;pointer-events:none;">
