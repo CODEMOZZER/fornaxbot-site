@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zophos - Settings</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', Arial, sans-serif;
+      background: radial-gradient(ellipse at center, #10131a 60%, #05060a 100%);
+      color: #eaf6ff;
+      min-height: 100vh;
+    }
+    .settings-banner {
+      width: 100%;
+      padding: 32px 0 24px 0;
+      background: linear-gradient(90deg, #ff7a2c 0%, #7a2cff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #7a2cff;
+    }
+    .settings-banner-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-left: 40px;
+    }
+    .settings-banner-avatar {
+      height: 70px;
+      width: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 12px #7a2cff;
+      background: #23272a;
+    }
+    .settings-banner-name {
+      font-size: 2em;
+      color: #fff;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+      text-shadow: 0 0 8px #7a2cff;
+    }
+    .settings-banner-right {
+      margin-right: 40px;
+    }
+    .settings-edit-btn {
+      background: linear-gradient(90deg, #7a2cff 0%, #ff7a2c 100%);
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 1.1em;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 8px #7a2cff;
+      transition: background 0.2s;
+    }
+    .settings-edit-btn:hover {
+      background: linear-gradient(90deg, #ff7a2c 0%, #7a2cff 100%);
+    }
+    .settings-card {
+      background: #181a24;
+      border-radius: 14px;
+      box-shadow: 0 0 16px #7a2cff, 0 2px 8px #23272a;
+      max-width: 540px;
+      margin: 40px auto;
+      padding: 32px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .settings-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #23272a;
+    }
+    .settings-label {
+      color: #b6b8d6;
+      font-size: 1.08em;
+      font-weight: bold;
+      flex: 1;
+    }
+    .settings-value {
+      color: #eaf6ff;
+      font-size: 1.08em;
+      flex: 2;
+      text-align: left;
+      margin-left: 18px;
+    }
+    .settings-actions {
+      flex: 1;
+      text-align: right;
+    }
+    .settings-action-btn {
+      background: none;
+      color: #7a2cff;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      margin-left: 10px;
+      font-weight: bold;
+      border-radius: 6px;
+      padding: 4px 10px;
+      transition: background 0.2s;
+    }
+    .settings-action-btn:hover {
+      background: #23272a;
+      color: #ff7a2c;
+    }
+    .settings-toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #7a2cff;
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 1.1em;
+      box-shadow: 0 2px 12px #7a2cff;
+      z-index: 99999;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="settings-banner">
+    <div class="settings-banner-left">
+      <img src="../assets/default_profile.png" alt="Profile" class="settings-banner-avatar" />
+      <span class="settings-banner-name">Legion</span>
+    </div>
+    <div class="settings-banner-right">
+      <button class="settings-edit-btn">Edit User Profile</button>
+    </div>
+  </div>
+  <div class="settings-card">
+    <div class="settings-row">
+      <span class="settings-label">Display Name</span>
+      <span class="settings-value">Legion</span>
+      <span class="settings-actions"><button class="settings-action-btn">Edit</button></span>
+    </div>
+    <div class="settings-row">
+      <span class="settings-label">Username</span>
+      <span class="settings-value">Legion</span>
+      <span class="settings-actions"><button class="settings-action-btn">Edit</button></span>
+    </div>
+    <div class="settings-row">
+      <span class="settings-label">Email</span>
+      <span class="settings-value">j******@gmail.com</span>
+      <span class="settings-actions"><button class="settings-action-btn">Reveal</button></span>
+    </div>
+    <div class="settings-row">
+      <span class="settings-label">Password</span>
+      <span class="settings-value">••••••••</span>
+      <span class="settings-actions"><button class="settings-action-btn">Edit</button></span>
+    </div>
+    <div class="settings-row">
+      <span class="settings-label">MFA</span>
+      <span class="settings-value">Disabled</span>
+      <span class="settings-actions"><button class="settings-action-btn">Enable</button></span>
+    </div>
+    <div class="settings-row">
+      <span class="settings-label">Connected Accounts</span>
+      <span class="settings-value">Google</span>
+      <span class="settings-actions"><button class="settings-action-btn">Manage</button></span>
+    </div>
+    <div class="settings-row">
+      <span class="settings-label">Notifications</span>
+      <span class="settings-value">Enabled</span>
+      <span class="settings-actions"><button class="settings-action-btn">Edit</button></span>
+    </div>
+    <div class="settings-row">
+      <span class="settings-label">Language</span>
+      <span class="settings-value">English</span>
+      <span class="settings-actions"><button class="settings-action-btn">Edit</button></span>
+    </div>
+    <div class="settings-row">
+      <span class="settings-label">Currency</span>
+      <span class="settings-value">USD</span>
+      <span class="settings-actions"><button class="settings-action-btn">Edit</button></span>
+    </div>
+    <!-- Role-based extra sections for Admin/Owner -->
+    <div class="settings-row" style="display:none;" id="settings-admin">
+      <span class="settings-label">Administration</span>
+      <span class="settings-value">Access</span>
+      <span class="settings-actions"><a href="/admin" class="settings-action-btn">Go</a></span>
+    </div>
+    <div class="settings-row" style="display:none;" id="settings-approvals">
+      <span class="settings-label">Approval Requests</span>
+      <span class="settings-value">Pending</span>
+      <span class="settings-actions"><a href="/approvals" class="settings-action-btn">Go</a></span>
+    </div>
+  </div>
+  <div class="settings-toast" id="settings-toast">Saved!</div>
+  <script>
+    // Example role logic
+    const user = { role: "Admin" };
+    if (user.role === "Admin" || user.role === "Owner") {
+      document.getElementById('settings-admin').style.display = "flex";
+      document.getElementById('settings-approvals').style.display = "flex";
+    }
+    // Toast logic
+    function showToast(msg) {
+      const toast = document.getElementById('settings-toast');
+      toast.textContent = msg;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 2000);
+    }
+    // Inline edit logic (scaffold only)
+    document.querySelectorAll('.settings-action-btn').forEach(btn => {
+      btn.onclick = function() {
+        if (btn.textContent === 'Edit') {
+          showToast('Edit feature coming soon!');
+        }
+        if (btn.textContent === 'Reveal') {
+          showToast('Re-auth required to reveal email!');
+        }
+      };
+    });
+  </script>
+</body>
+</html>

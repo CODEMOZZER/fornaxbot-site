@@ -19,7 +19,7 @@
       display: flex;
       align-items: center;
       height: 70px;
-      justify-content: space-between;
+      justify-content: flex-start;
       box-shadow: 0 2px 12px 0 rgba(0, 170, 255, 0.15);
       border-bottom: 1px solid #0a1a2f;
     }
@@ -135,16 +135,57 @@
       <img src="../assets/ZOPHOSLOGO4.png" alt="ZOPHOS Logo" class="logo-img" />
       <span>ZOPHOS</span>
     </div>
-    <ul class="navbar-links">
+    <ul class="navbar-links" style="display:flex;align-items:center;">
       <li><a href="home.html">Home</a></li>
       <li><a href="features.html">Features</a></li>
       <li><a href="docs.html">Docs</a></li>
       <li class="active"><a href="community.html">Community</a></li>
       <li><a href="dashboard.html">Bot Dashboard</a></li>
     </ul>
-    <div id="navbar-profile" style="margin-left:auto;display:none;align-items:center;gap:10px;">
+    <div id="navbar-profile" style="margin-left:auto;display:none;align-items:center;gap:10px;position:relative;">
       <img id="profile-icon" src="../assets/default_profile.png" alt="Profile" style="height:40px;width:40px;border-radius:50%;object-fit:cover;cursor:pointer;box-shadow:0 2px 8px #7a2cff;" />
+      <div id="profile-dropdown" style="display:none;position:absolute;top:54px;right:0;min-width:260px;background:#181a24;border-radius:14px;box-shadow:0 0 16px #7a2cff,0 2px 8px #23272a;padding:0;z-index:10000;flex-direction:column;overflow:hidden;">
+        <div style="padding:18px 18px 10px 18px;border-bottom:1px solid #23272a;display:flex;align-items:center;gap:12px;">
+          <img id="dropdown-profile-icon" src="../assets/default_profile.png" alt="Profile" style="height:38px;width:38px;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px #7a2cff;" />
+          <div style="flex:1;">
+            <div id="dropdown-displayname" style="font-weight:bold;color:#eaf6ff;font-size:1.08em;"></div>
+            <div id="dropdown-email" style="color:#b6b8d6;font-size:0.98em;margin-top:2px;"></div>
+            <div id="dropdown-role" style="font-size:0.92em;color:#7a2cff;font-weight:bold;"></div>
+            <div id="dropdown-tier" style="font-size:0.92em;color:#ffd700;font-weight:bold;"></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;">
+          <a href="/settings" class="profile-menu-item">My Settings</a>
+          <a href="/account/plan" class="profile-menu-item">Account Plan</a>
+          <a href="/admin" class="profile-menu-item" id="dropdown-admin" style="display:none;">Administration</a>
+          <a href="/approvals" class="profile-menu-item" id="dropdown-approvals" style="display:none;">Approval Requests</a>
+          <a href="/help" class="profile-menu-item">Help Center</a>
+          <div style="display:flex;gap:8px;padding:10px 18px 0 18px;align-items:center;">
+            <select id="dropdown-lang" style="background:#23272a;color:#eaf6ff;border:none;border-radius:6px;padding:4px 8px;font-size:0.98em;">
+              <option>English</option>
+            </select>
+            <select id="dropdown-currency" style="background:#23272a;color:#eaf6ff;border:none;border-radius:6px;padding:4px 8px;font-size:0.98em;">
+              <option>USD</option>
+            </select>
+          </div>
+        </div>
+        <button id="dropdown-signout" class="btn" style="width:100%;margin:12px 0 0 0;background:linear-gradient(90deg,#7a2cff 0%,#3b0b96 100%);box-shadow:0 0 8px #7a2cff;">Sign Out</button>
+      </div>
     </div>
+        .profile-menu-item {
+          display:block;
+          padding:12px 18px;
+          color:#eaf6ff;
+          text-decoration:none;
+          font-size:1.04em;
+          border-left:4px solid transparent;
+          transition:background 0.18s,border-left 0.18s;
+        }
+        .profile-menu-item:hover {
+          background:#23272a;
+          border-left:4px solid #7a2cff;
+          color:#7a2cff;
+        }
     <!-- Profile Modal -->
     <div id="profile-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(10,16,32,0.85);z-index:9999;align-items:center;justify-content:center;">
       <div style="background:#23272a;padding:32px 28px;border-radius:16px;max-width:340px;margin:auto;box-shadow:0 2px 16px #7a2cff;display:flex;flex-direction:column;align-items:center;">
@@ -175,6 +216,51 @@
       <button type="submit" class="btn">Post</button>
     </div>
     <script>
+            // Example user data (replace with real auth integration)
+            const user = {
+              loggedIn: true, // set to false for anonymous
+              displayName: "Legion",
+              username: "Legion",
+              email: "johndoe@gmail.com",
+              role: "Admin", // Admin, Member, Owner
+              tier: "Gold", // Silver, Gold, etc.
+              profilePic: "../assets/default_profile.png" // or Google profile image
+            };
+
+            // Show profile icon if logged in
+            if (user.loggedIn) {
+              document.getElementById('navbar-profile').style.display = 'flex';
+              document.getElementById('profile-icon').src = user.profilePic;
+            }
+
+            // Profile dropdown logic
+            const profileIcon = document.getElementById('profile-icon');
+            const profileDropdown = document.getElementById('profile-dropdown');
+            profileIcon.onclick = function(e) {
+              e.stopPropagation();
+              profileDropdown.style.display = 'flex';
+              document.getElementById('dropdown-profile-icon').src = user.profilePic;
+              document.getElementById('dropdown-displayname').textContent = user.displayName;
+              // Masked email
+              const email = user.email;
+              const atIdx = email.indexOf('@');
+              let hiddenEmail = email[0] + "";
+              for (let i = 1; i < atIdx; i++) hiddenEmail += "*";
+              hiddenEmail += email.slice(atIdx);
+              document.getElementById('dropdown-email').textContent = hiddenEmail;
+              document.getElementById('dropdown-role').textContent = user.role;
+              document.getElementById('dropdown-tier').textContent = user.tier ? `Tier: ${user.tier}` : "";
+              // Role-based links
+              document.getElementById('dropdown-admin').style.display = (user.role === "Admin" || user.role === "Owner") ? "block" : "none";
+              document.getElementById('dropdown-approvals').style.display = (user.role === "Admin" || user.role === "Owner") ? "block" : "none";
+            };
+            // Close dropdown on outside click or Esc
+            document.addEventListener('click', function(e) {
+              if (profileDropdown.style.display === 'flex') profileDropdown.style.display = 'none';
+            });
+            document.addEventListener('keydown', function(e) {
+              if (e.key === 'Escape' && profileDropdown.style.display === 'flex') profileDropdown.style.display = 'none';
+            });
         // Example user data (replace with real auth integration)
         const user = {
           loggedIn: true, // set to false for anonymous
