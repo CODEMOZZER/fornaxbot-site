@@ -100,48 +100,5 @@
     // Example user data (replace with real auth integration)
     const user = {
       loggedIn: true, // set to false for anonymous
-      displayName: "Legion",
-      username: "Legion",
-      email: "johndoe@gmail.com",
-      role: "Admin", // Admin, Member, Owner
-      tier: "Gold", // Silver, Gold, etc.
-      profilePic: "../assets/default_profile.png" // or Google profile image
-    };
-
-    // Show profile icon if logged in
-    if (user.loggedIn) {
-      document.getElementById('navbar-profile').style.display = 'flex';
-      document.getElementById('profile-icon').src = user.profilePic;
-    }
-
-    // Profile dropdown logic
-    const profileIcon = document.getElementById('profile-icon');
-    const profileDropdown = document.getElementById('profile-dropdown');
-    profileIcon.onclick = function(e) {
-      e.stopPropagation();
-      profileDropdown.style.display = 'flex';
-      document.getElementById('dropdown-profile-icon').src = user.profilePic;
-      document.getElementById('dropdown-displayname').textContent = user.displayName;
-      // Masked email
-      const email = user.email;
-      const atIdx = email.indexOf('@');
-      let hiddenEmail = email[0] + "";
-      for (let i = 1; i < atIdx; i++) hiddenEmail += "*";
-      hiddenEmail += email.slice(atIdx);
-      document.getElementById('dropdown-email').textContent = hiddenEmail;
-      document.getElementById('dropdown-role').textContent = user.role;
-      document.getElementById('dropdown-tier').textContent = user.tier ? `Tier: ${user.tier}` : "";
-      // Role-based links
-      document.getElementById('dropdown-admin').style.display = (user.role === "Admin" || user.role === "Owner") ? "block" : "none";
-      document.getElementById('dropdown-approvals').style.display = (user.role === "Admin" || user.role === "Owner") ? "block" : "none";
-    };
-    // Close dropdown on outside click or Esc
-    document.addEventListener('click', function(e) {
-      if (profileDropdown.style.display === 'flex') profileDropdown.style.display = 'none';
-    });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && profileDropdown.style.display === 'flex') profileDropdown.style.display = 'none';
-    });
-  </script>
-</body>
+        <!--#include file="navbar.html" -->
 </html>
