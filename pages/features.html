@@ -71,49 +71,8 @@
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="navbar-brand">
-      <img src="../assets/ZOPHOSLOGO4.png" alt="ZOPHOS Logo" class="logo-img" />
-      <span>ZOPHOS</span>
-    </div>
-    <ul class="navbar-links" style="display:flex;align-items:center;">
-      <li><a href="home.html">Home</a></li>
-      <li><a href="features.html">Features</a></li>
-      <li><a href="docs.html">Docs</a></li>
-      <li><a href="community.html">Community</a></li>
-      <li><a href="dashboard.html">Bot Dashboard</a></li>
-    </ul>
-    <div id="navbar-profile" style="margin-left:auto;display:none;align-items:center;gap:10px;position:relative;">
-      <img id="profile-icon" src="../assets/default_profile.png" alt="Profile" style="height:40px;width:40px;border-radius:50%;object-fit:cover;cursor:pointer;box-shadow:0 2px 8px #7a2cff;" />
-      <div id="profile-dropdown" style="display:none;position:absolute;top:54px;right:0;min-width:260px;background:#181a24;border-radius:14px;box-shadow:0 0 16px #7a2cff,0 2px 8px #23272a;padding:0;z-index:10000;flex-direction:column;overflow:hidden;">
-        <div style="padding:18px 18px 10px 18px;border-bottom:1px solid #23272a;display:flex;align-items:center;gap:12px;">
-          <img id="dropdown-profile-icon" src="../assets/default_profile.png" alt="Profile" style="height:38px;width:38px;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px #7a2cff;" />
-          <div style="flex:1;">
-            <div id="dropdown-displayname" style="font-weight:bold;color:#eaf6ff;font-size:1.08em;"></div>
-            <div id="dropdown-email" style="color:#b6b8d6;font-size:0.98em;margin-top:2px;"></div>
-            <div id="dropdown-role" style="font-size:0.92em;color:#7a2cff;font-weight:bold;"></div>
-            <div id="dropdown-tier" style="font-size:0.92em;color:#ffd700;font-weight:bold;"></div>
-          </div>
-        </div>
-        <div style="display:flex;flex-direction:column;">
-          <a href="/settings" class="profile-menu-item">My Settings</a>
-          <a href="/account/plan" class="profile-menu-item">Account Plan</a>
-          <a href="/admin" class="profile-menu-item" id="dropdown-admin" style="display:none;">Administration</a>
-          <a href="/approvals" class="profile-menu-item" id="dropdown-approvals" style="display:none;">Approval Requests</a>
-          <a href="/help" class="profile-menu-item">Help Center</a>
-          <div style="display:flex;gap:8px;padding:10px 18px 0 18px;align-items:center;">
-            <select id="dropdown-lang" style="background:#23272a;color:#eaf6ff;border:none;border-radius:6px;padding:4px 8px;font-size:0.98em;">
-              <option>English</option>
-            </select>
-            <select id="dropdown-currency" style="background:#23272a;color:#eaf6ff;border:none;border-radius:6px;padding:4px 8px;font-size:0.98em;">
-              <option>USD</option>
-            </select>
-          </div>
-        </div>
-        <button id="dropdown-signout" class="btn" style="width:100%;margin:12px 0 0 0;background:linear-gradient(90deg,#7a2cff 0%,#3b0b96 100%);box-shadow:0 0 8px #7a2cff;">Sign Out</button>
-      </div>
-    </div>
-  </nav>
+  <!-- Universal Navbar Include -->
+  <!--#include file="navbar.html" -->
   <h1>Features</h1>
   <section class="roblox-features">
     <h2>Roblox Community Features</h2>

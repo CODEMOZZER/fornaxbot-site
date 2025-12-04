@@ -1,0 +1,58 @@
+<!-- Zophos Universal Navbar Component -->
+<nav class="navbar" aria-label="Main Navigation">
+  <div class="navbar-brand" style="display:flex;align-items:center;gap:0;">
+    <img src="../assets/ZOPHOSLOGO4.png" alt="ZOPHOS Logo" class="logo-img" style="margin:0;padding:0;" />
+    <span style="margin:0;padding:0;">ZOPHOS</span>
+  </div>
+  <ul class="navbar-links" style="display:flex;align-items:center;gap:0;margin:0;padding:0;">
+    <li style="margin:0;padding:0;"><a href="home.html" style="margin:0;padding:0;">Home</a></li>
+    <li style="margin:0;padding:0;"><a href="features.html" style="margin:0;padding:0;">Features</a></li>
+    <li style="margin:0;padding:0;"><a href="docs.html" style="margin:0;padding:0;">Docs</a></li>
+    <li style="margin:0;padding:0;"><a href="community.html" style="margin:0;padding:0;">Community</a></li>
+    <li style="margin:0;padding:0;"><a href="dashboard.html" style="margin:0;padding:0;">Bot Dashboard</a></li>
+  </ul>
+  <div class="navbar-icons" style="margin-left:0;display:flex;align-items:center;gap:0;">
+    <button class="icon-btn" aria-label="Favorites" tabindex="0" style="margin:0;padding:0;"><span class="icon-heart"></span></button>
+    <button class="icon-btn" aria-label="Notifications" tabindex="0" style="margin:0;padding:0;"><span class="icon-bell"></span></button>
+    <button class="icon-btn" aria-label="Messages" tabindex="0" style="margin:0;padding:0;"><span class="icon-envelope"></span></button>
+    <button class="icon-btn" aria-label="Help" tabindex="0" onclick="window.location.href='/help.html'" style="margin:0;padding:0;"><span class="icon-question"></span></button>
+    <div id="navbar-profile" style="display:flex;align-items:center;position:relative;margin:0;padding:0;">
+      <img id="profile-icon" src="../assets/profile pic.png" alt="Profile" style="height:40px;width:40px;border-radius:50%;object-fit:cover;cursor:pointer;box-shadow:0 2px 8px #7a2cff;margin:0;padding:0;" tabindex="0" aria-haspopup="true" aria-expanded="false" />
+      <div id="profile-dropdown" role="menu" aria-label="Profile Menu" style="display:none;position:absolute;top:54px;right:0;min-width:260px;background:#181a24;border-radius:14px;box-shadow:0 0 16px #7a2cff,0 2px 8px #23272a;padding:0;z-index:10000;flex-direction:column;overflow:hidden;margin:0;">
+        <!-- Authenticated State -->
+        <div id="dropdown-auth" style="display:none;">
+          <div style="padding:18px 18px 10px 18px;border-bottom:1px solid #23272a;display:flex;align-items:center;gap:12px;">
+            <img id="dropdown-profile-icon" src="../assets/profile pic.png" alt="Profile" style="height:38px;width:38px;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px #7a2cff;" />
+            <div style="flex:1;">
+              <div id="dropdown-displayname" style="font-weight:bold;color:#eaf6ff;font-size:1.08em;"></div>
+              <div id="dropdown-role" style="font-size:0.92em;color:#7a2cff;font-weight:bold;"></div>
+              <!-- Email only shown if logged in, add with JS if needed -->
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;">
+            <a href="/settings.html" class="profile-menu-item" role="menuitem">My Settings</a>
+            <a href="/account/plan.html" class="profile-menu-item" role="menuitem">Account Plan</a>
+            <a href="/admin.html" class="profile-menu-item" id="dropdown-admin" style="display:none;" role="menuitem">Administration</a>
+            <a href="/approvals.html" class="profile-menu-item" id="dropdown-approvals" style="display:none;" role="menuitem">Approval Requests</a>
+            <a href="/help.html" class="profile-menu-item" role="menuitem">Help Center</a>
+            <div style="display:flex;gap:8px;padding:10px 18px 0 18px;align-items:center;">
+              <select id="dropdown-lang" style="background:#23272a;color:#eaf6ff;border:none;border-radius:6px;padding:4px 8px;font-size:0.98em;">
+                <option>English</option>
+              </select>
+              <select id="dropdown-currency" style="background:#23272a;color:#eaf6ff;border:none;border-radius:6px;padding:4px 8px;font-size:0.98em;">
+                <option>USD</option>
+              </select>
+            </div>
+          </div>
+          <button id="dropdown-signout" class="btn" style="width:100%;margin:12px 0 0 0;background:linear-gradient(90deg,#7a2cff 0%,#3b0b96 100%);box-shadow:0 0 8px #7a2cff;" role="menuitem">Sign Out</button>
+        </div>
+        <!-- Unauthenticated State -->
+        <div id="dropdown-unauth" style="display:none;flex-direction:column;align-items:center;padding:24px 18px;">
+          <img src="../assets/profile pic.png" alt="Default Profile" style="height:38px;width:38px;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px #7a2cff;margin-bottom:12px;" />
+          <button class="btn" style="width:100%;margin-bottom:10px;" onclick="window.location.href='/signin.html'" role="menuitem">Sign In</button>
+          <button class="btn" style="width:100%;" onclick="window.location.href='/signup.html'" role="menuitem">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

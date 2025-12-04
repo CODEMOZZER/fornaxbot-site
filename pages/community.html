@@ -161,49 +161,8 @@
       <div id="profile-dropdown" style="display:none;position:absolute;top:54px;right:0;min-width:260px;background:#181a24;border-radius:14px;box-shadow:0 0 16px #7a2cff,0 2px 8px #23272a;padding:0;z-index:10000;flex-direction:column;overflow:hidden;">
         <div style="padding:18px 18px 10px 18px;border-bottom:1px solid #23272a;display:flex;align-items:center;gap:12px;">
           <img id="dropdown-profile-icon" src="../assets/default_profile.png" alt="Profile" style="height:38px;width:38px;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px #7a2cff;" />
-          <div style="flex:1;">
-            <div id="dropdown-displayname" style="font-weight:bold;color:#eaf6ff;font-size:1.08em;"></div>
-            <div id="dropdown-email" style="color:#b6b8d6;font-size:0.98em;margin-top:2px;"></div>
-            <div id="dropdown-role" style="font-size:0.92em;color:#7a2cff;font-weight:bold;"></div>
-            <div id="dropdown-tier" style="font-size:0.92em;color:#ffd700;font-weight:bold;"></div>
-          </div>
-        </div>
-        <div style="display:flex;flex-direction:column;">
-          <a href="/settings" class="profile-menu-item">My Settings</a>
-          <a href="/account/plan" class="profile-menu-item">Account Plan</a>
-          <a href="/admin" class="profile-menu-item" id="dropdown-admin" style="display:none;">Administration</a>
-          <a href="/approvals" class="profile-menu-item" id="dropdown-approvals" style="display:none;">Approval Requests</a>
-          <a href="/help" class="profile-menu-item">Help Center</a>
-          <div style="display:flex;gap:8px;padding:10px 18px 0 18px;align-items:center;">
-            <select id="dropdown-lang" style="background:#23272a;color:#eaf6ff;border:none;border-radius:6px;padding:4px 8px;font-size:0.98em;">
-              <option>English</option>
-            </select>
-            <select id="dropdown-currency" style="background:#23272a;color:#eaf6ff;border:none;border-radius:6px;padding:4px 8px;font-size:0.98em;">
-              <option>USD</option>
-            </select>
-          </div>
-        </div>
-        <button id="dropdown-signout" class="btn" style="width:100%;margin:12px 0 0 0;background:linear-gradient(90deg,#7a2cff 0%,#3b0b96 100%);box-shadow:0 0 8px #7a2cff;">Sign Out</button>
-      </div>
-    </div>
-    <!-- Profile Modal -->
-    <div id="profile-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(10,16,32,0.85);z-index:9999;align-items:center;justify-content:center;">
-      <div style="background:#23272a;padding:32px 28px;border-radius:16px;max-width:340px;margin:auto;box-shadow:0 2px 16px #7a2cff;display:flex;flex-direction:column;align-items:center;">
-        <img id="modal-profile-icon" src="../assets/default_profile.png" alt="Profile" style="height:70px;width:70px;border-radius:50%;object-fit:cover;margin-bottom:12px;box-shadow:0 2px 12px #7a2cff;" />
-        <div style="width:100%;margin-bottom:10px;text-align:center;">
-          <span id="modal-username" style="font-size:1.2em;color:#7a2cff;font-weight:bold;"></span>
-        </div>
-        <div style="width:100%;margin-bottom:18px;text-align:center;">
-          <span style="color:#eaf6ff;font-size:1em;">Email: <span id="modal-email" style="background:#181a24;padding:2px 8px;border-radius:6px;"></span></span>
-        </div>
-        <button onclick="hideProfileModal()" class="btn" style="width:100%;">Close</button>
-      </div>
-    </div>
-  </nav>
-  <div class="content">
-    <h1 style="text-align:center;color:#7a2cff;margin-bottom:8px;">Community Forum</h1>
-    <p style="text-align:center;max-width:600px;">Welcome to the Zophos community forum! Chat, share, and connect. Roles give special permissions—owners can delete any message.</p>
-    <div class="community-actions">
+          <!-- Universal Navbar Include -->
+          <!--#include file="navbar.html" -->
       <a href="#" class="btn">Join Discord Chat</a>
       <a href="#" class="btn">Join Roblox Group</a>
     </div>
