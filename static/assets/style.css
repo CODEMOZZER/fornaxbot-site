@@ -1,0 +1,77 @@
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: background 0.3s, transform 0.2s;
+}
+.btn.primary {
+  color: #fff;
+  background: linear-gradient(90deg, #00cfff 0%, #10131a 100%);
+}
+.btn.primary:hover {
+  background: linear-gradient(90deg, #10131a 0%, #00cfff 100%);
+  transform: scale(1.05);
+}
+.btn.secondary {
+  color: #fff;
+  background: linear-gradient(90deg, #6ed7ff 0%, #1a1f2a 100%);
+}
+.btn.secondary:hover {
+  background: linear-gradient(90deg, #1a1f2a 0%, #6ed7ff 100%);
+  transform: scale(1.05);
+}
+
+/* Navbar */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: rgba(10,16,32,0.9);
+}
+.nav .links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.nav .brand {
+  color: #00cfff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+.dropbtn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background: #0a1020;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+.dropdown-content a {
+  color: #fff;
+  padding: 12px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {
+  background: #00cfff;
+  color: #10131a;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}

@@ -2,35 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';">
-  <title>{{ title or 'Zophos' }}</title>
-  {% include 'navbar.html' %}
-  <style>
-    body {
-      background: radial-gradient(ellipse at center,#10131a 60%,#05060a 100%);
-      color: #eaf6ff;
-      min-height: 100vh;
-      margin: 0;
-      padding: 0;
-    }
-    .footer {
-      background: rgba(10,16,32,0.98);
-      text-align: center;
-      padding: 20px 0;
-      color: #00cfff;
-      position: relative;
-      bottom: 0;
-      width: 100%;
-      font-size: 1.08em;
-      text-shadow: 0 0 16px #00cfff, 0 0 32px #10131a;
-      letter-spacing: 1px;
-      box-shadow: 0 -2px 12px #00cfff;
-    }
-  </style>
+  <title>ZOPHOS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script defer src="{{ url_for('static', filename='app.js') }}"></script>
 </head>
-<body>
-  {% block content %}{% endblock %}
-  <footer class="footer">&copy; 2025 ZOPHOS. ALL RIGHTS RESERVED.</footer>
+<body class="cosmic-bg">
+  {% include 'navbar.html' %}
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+  {% include 'footer.html' %}
 </body>
 </html>
